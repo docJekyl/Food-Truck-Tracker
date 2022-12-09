@@ -1,14 +1,12 @@
 import React from 'react'
-import { Route, Routes } from 'react-router-dom'
-import Home from '../Home/Home'
-import ClientLayout from '../Layouts/ClientLayout'
+import ClientRoot from './ClientRoot'
 
 export default () => {
+
+  // This will eventually be the conroller, directing the user to the client or vendor sides of the app. 
+  // Vendor login will be 
+
   return (
-    <Routes>
-      <Route path='/' element={<ClientLayout />}>
-        <Route index element={<Home/>}/>
-      </Route>
-    </Routes>
+    <ClientRoot />  
   )
 }

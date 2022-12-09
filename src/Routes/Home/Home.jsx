@@ -1,6 +1,6 @@
 import React from 'react'
-import { Card } from '../Components/Card'
-import { Container } from '../Components/Container'
+import { Card } from '../../Components/Card'
+import { Container } from '../../Components/Container'
 
 export default () => {
   return (
