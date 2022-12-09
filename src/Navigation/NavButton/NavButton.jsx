@@ -24,7 +24,7 @@ export default ({label, location}) => {
 
   const { classes } = buttonStyles();
 
-console.log(classes.wrapper)
+
   return (
     <div 
       className={selected ? classes.wrapperSelected : classes.wrapper}

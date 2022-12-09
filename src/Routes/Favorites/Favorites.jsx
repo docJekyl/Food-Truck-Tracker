@@ -1,9 +1,15 @@
 import React from 'react'
 
+import { Container } from '../../Components/Container'
+import RouteCard from '../../Components/RouteCard'
+
+
 export default () => {
   return (
-    <div>
-      Favorites
-    </div>
+    <Container>
+      <RouteCard>
+        Favs
+      </RouteCard>
+    </Container>
   )
 }
