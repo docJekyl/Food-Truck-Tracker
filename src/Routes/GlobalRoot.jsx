@@ -1,12 +1,16 @@
-import React from 'react'
-import ClientRoot from './ClientRoot'
+import React, { useState } from 'react'
+import { CurrentUserContext } from '../contexts/CurrentUserContext'
+import ClientRoot from './AppRoot'
+
+// mock data imports. set current user to vendor to swithc current user contexts
+import { user, vendor } from '../../mockData/mocks'
 
 export default () => {
-
-  // This will eventually be the conroller, directing the user to the client or vendor sides of the app. 
-  // Vendor login will be 
+  const [ currentUser, setCurrentUser ] = useState(user)
 
   return (
-    <ClientRoot />  
+    <CurrentUserContext.Provider value={{currentUser, setCurrentUser}}>
+      <ClientRoot />  
+    </CurrentUserContext.Provider>
   )
 }
