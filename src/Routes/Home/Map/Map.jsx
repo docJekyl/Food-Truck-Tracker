@@ -1,82 +1,50 @@
 import React, { useEffect, useState } from 'react'
 import { Group } from '@mantine/core';
-import Map from 'react-map-gl';
-// import { getLocation } from '../../../utils/geolocation';
+import Map, { Marker } from 'react-map-gl';
+import { getLocation } from '../../../utils/geolocation';
+import LoadingState from './LoadingState';
+import { FaDotCircle } from 'react-icons/fa'
+
+import { vendors } from '../../../../mockData/mocks'
+import VendorInfoModal from './VendorInfoModal';
+import VendorMarker from './VendorMarker';
 
 let accessToken = 'pk.eyJ1IjoiamF2YW11bmNoIiwiYSI6ImNsYmxhM3FwODA1aWwzb213dmdja2d1MXQifQ.rYGbR8B7ei1iGQt0RfMxGw';
 
+console.log(vendors)
+
 export default () => {
-  const [ location, setLocation ] = useState(false)
-
-  const getLocation = async () => {
-
-    var options = {
-      enableHighAccuracy: false,
-      timeout: 5000,
-      maximumAge: 0,
-    };
-
-    function success(pos) {
-      var crd = pos.coords;
-      console.log(pos)
-      // setLocation(crd)
-      console.log('test')
-      return crd
-    }
-
-    function errors(err) {
-      console.warn(`ERROR(${err.code}): ${err.message}`);
-    }
-
-
-    if (navigator.geolocation) {
-      navigator.permissions
-        .query({ name: "geolocation" })
-        .then(function (result) {
-          if (result.state === "granted") {
-            console.log(result.state);
-            //If granted then you can directly call your function here
-            navigator.geolocation.getCurrentPosition((success));
-          } else if (result.state === "prompt") {
-            navigator.geolocation.getCurrentPosition(success, errors, options);
-          } else if (result.state === "denied") {
-            //If denied then you have to show instructions to enable location
-          }
-          result.onchange = function () {
-            console.log(result.state);
-          };
-        });
-    } else {
-      alert("Sorry Not available!");
-    }
-  }
+  const [ location, setLocation ] = useState(null)
 
   useEffect(() => {
-    getLocation()
-  })
+    getLocation(setLocation)
+  }, [])
 
-// while loading, render food truck logo with animations?
-// once loaded, show map with current location
 // fetch nearby food trucks
 // render trucks on map
-
-
-// create a status bar across the top of the app to show progress of getting all data. 
-
-
+if(location === null) { return (<LoadingState />) }
 
   return (
     <Group position='center'>
       <Map
         initialViewState={{
-          longitude: -122.4,
-          latitude: 37.8,
+          longitude: location.longitude,
+          latitude: location.latitude,
           zoom: 16
         }}
         style={{width: 600, height: 400}}
         mapStyle={`mapbox://styles/mapbox/streets-v9`}
-        mapboxAccessToken={accessToken}      
-      />
+        mapboxAccessToken={accessToken}
+      >
+        <Marker
+          longitude={location.longitude}
+          latitude={location.latitude}
+        >
+          <FaDotCircle size={20} color='red'/>
+        </Marker>
+
+        {vendors.map((v) => <VendorMarker v={v} key={v.id} />)}
+      </Map>
     </Group>
   );
 }
