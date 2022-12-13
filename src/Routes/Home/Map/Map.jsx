@@ -25,14 +25,14 @@ export default () => {
 if(location === null) { return (<LoadingState />) }
 
   return (
-    <Group position='center'>
+    <Group >
       <Map
         initialViewState={{
           longitude: location.longitude,
           latitude: location.latitude,
           zoom: 16
         }}
-        style={{width: 600, height: 400}}
+        style={{width: 600, height: 800}}
         mapStyle={`mapbox://styles/mapbox/streets-v9`}
         mapboxAccessToken={accessToken}
       >

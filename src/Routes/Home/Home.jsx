@@ -1,10 +1,11 @@
-import { Space } from '@mantine/core'
+import { SimpleGrid, Space } from '@mantine/core'
 import React from 'react'
 import { Container } from '../../Components/Container'
 import RouteCard from '../../Components/RouteCard'
 import { CurrentUserContext } from '../../contexts/CurrentUserContext'
 import Map from './Map/Map'
 import OpenSign from './OpenSign'
+import VendorTable from './VendorTable/VendorTable'
 
 export default () => {
   const { currentUser } = React.useContext(CurrentUserContext)
@@ -16,12 +17,11 @@ export default () => {
       <Space h='lg'/>
 
       <RouteCard style={{backgroundColor: '#f8f7f7'}}>
-          <Map />
+        <SimpleGrid cols={2}>
+          <VendorTable/>
+          <Map/>
+        </SimpleGrid>
       </RouteCard>
-      {/* <Space h='lg'/>
-      <RouteCard>
-          <Text>'Wheels of hunger -randomly selects a food truck within a given radius of current location </Text>
-      </RouteCard> */}
     </Container>
   )
 }
