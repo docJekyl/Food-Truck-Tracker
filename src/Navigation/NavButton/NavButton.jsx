@@ -14,12 +14,14 @@ export default ({icon, label, location, fx}) => {
 
   let buttonStyles = createStyles(() => ({
     wrapper: {
+      color: theme.colors.gray[6],
       height: 50,
       backgroundColor: 'transparent'
     },
     wrapperSelected : {
+      color: theme.colors.gray[8],
       height: 50,
-      backgroundColor: theme.colors.blue[5]
+      backgroundColor: theme.colors.blue[1]
     }
   }));
 
@@ -34,7 +36,7 @@ export default ({icon, label, location, fx}) => {
       <Center inline mt='sm' ml='lg'>
         {icon}
         <Space w='sm'/>
-        <Text align='center'>{label}</Text>
+        <Text align='center' weight={600}>{label}</Text>
       </Center>
     </div>
   )

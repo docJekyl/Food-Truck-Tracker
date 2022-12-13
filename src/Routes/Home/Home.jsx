@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { Container } from '../../Components/Container'
 import RouteCard from '../../Components/RouteCard'
 import { CurrentUserContext } from '../../contexts/CurrentUserContext'
+import Map from './Map/Map'
 import OpenSign from './OpenSign'
 
 export default () => {
@@ -19,7 +20,7 @@ export default () => {
       <Space h='lg'/>
 
       <RouteCard>
-          <Text>Map component</Text>
+          <Map />
       </RouteCard>
       <Space h='lg'/>
       <RouteCard>
