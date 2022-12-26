@@ -6,12 +6,9 @@ import LoadingState from './LoadingState';
 import { FaDotCircle } from 'react-icons/fa'
 
 import { vendors } from '../../../../mockData/mocks'
-import VendorInfoModal from './VendorInfoModal';
 import VendorMarker from './VendorMarker';
 
 let accessToken = 'pk.eyJ1IjoiamF2YW11bmNoIiwiYSI6ImNsYmxhM3FwODA1aWwzb213dmdja2d1MXQifQ.rYGbR8B7ei1iGQt0RfMxGw';
-
-console.log(vendors)
 
 export default () => {
   const [ location, setLocation ] = useState(null)
@@ -30,7 +27,7 @@ if(location === null) { return (<LoadingState />) }
         initialViewState={{
           longitude: location.longitude,
           latitude: location.latitude,
-          zoom: 16
+          zoom: 13.5
         }}
         style={{width: 600, height: 800}}
         mapStyle={`mapbox://styles/mapbox/streets-v9`}
@@ -42,7 +39,6 @@ if(location === null) { return (<LoadingState />) }
         >
           <FaDotCircle size={20} color='red'/>
         </Marker>
-
         {vendors.map((v) => <VendorMarker v={v} key={v.id} />)}
       </Map>
     </Group>

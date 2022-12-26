@@ -1,4 +1,5 @@
 import burger from '../src/assets/burger.jpeg'
+import hotPocket from '../src/assets/hotpocket.png'
 
 export const user = {
   id: 1,
@@ -41,7 +42,7 @@ export const vendors = [
       id:2,
       unitNumber: 1,
       brandName: `Lava Pocket Express`,
-      logo: burger,
+      logo: hotPocket,
       url: 'http://curbsideburgers.com/',
       lon: -97.6741115,
       lat: 35.6571186,

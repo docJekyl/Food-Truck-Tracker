@@ -5,7 +5,7 @@ import ClientLayout from '../Layouts/ClientLayout'
 import Favorites from './Favorites/Favorites'
 import { CurrentUserContext } from '../contexts/CurrentUserContext'
 
-export default () => {
+export default gs() => {
 
   return (
     <Routes>
